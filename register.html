@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register - Taskvora</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/sweet-theme.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="sweet-background">
+    <div class="container">
+        <div class="row justify-content-center align-items-center min-vh-100">
+            <div class="col-md-6">
+                <div class="text-center mb-4">
+                    <a href="index.html" class="text-decoration-none">
+                        <i class="fas fa-clipboard-check fa-3x text-primary"></i>
+                        <h1 class="h2 mt-3 fw-bold" style="background: linear-gradient(45deg, #ff6b6b, #4ecdc4); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">Taskvora</h1>
+                    </a>
+                </div>
+                
+                <div class="card shadow-lg border-0 sweet-card">
+                    <div class="card-header text-center py-3 bg-primary text-white">
+                        <h4 class="mb-0">Employee Registration</h4>
+                        <small>Request access to password manager</small>
+                    </div>
+                    
+                    <div class="card-body p-4">
+                        <div id="message" class="alert d-none"></div>
+                        
+                        <form id="registerForm">
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label class="form-label">Employee ID *</label>
+                                    <div class="input-group">
+                                        <span class="input-group-text">
+                                            <i class="fas fa-id-badge"></i>
+                                        </span>
+                                        <input type="text" class="form-control" id="employee_id" 
+                                               placeholder="EMP001" required>
+                                    </div>
+                                </div>
+                                
+                                <div class="col-md-6 mb-3">
+                                    <label class="form-label">Full Name *</label>
+                                    <div class="input-group">
+                                        <span class="input-group-text">
+                                            <i class="fas fa-user"></i>
+                                        </span>
+                                        <input type="text" class="form-control" id="full_name" 
+                                               placeholder="John Doe" required>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="mb-3">
+                                <label class="form-label">Email Address *</label>
+                                <div class="input-group">
+                                    <span class="input-group-text">
+                                        <i class="fas fa-envelope"></i>
+                                    </span>
+                                    <input type="email" class="form-control" id="email" 
+                                           placeholder="employee@company.com" required>
+                                </div>
+                            </div>
+                            
+                            <div class="mb-3">
+                                <label class="form-label">Department *</label>
+                                <div class="input-group">
+                                    <span class="input-group-text">
+                                        <i class="fas fa-building"></i>
+                                    </span>
+                                    <select class="form-select" id="department" required>
+                                        <option value="">Select Department</option>
+                                        <option value="IT">IT Department</option>
+                                        <option value="HR">Human Resources</option>
+                                        <option value="Finance">Finance</option>
+                                        <option value="Sales">Sales</option>
+                                        <option value="Marketing">Marketing</option>
+                                        <option value="Operations">Operations</option>
+                                        <option value="Other">Other</option>
+                                    </select>
+                                </div>
+                            </div>
+                            
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label class="form-label">Password *</label>
+                                    <div class="input-group">
+                                        <span class="input-group-text">
+                                            <i class="fas fa-key"></i>
+                                        </span>
+                                        <input type="password" class="form-control" id="password" 
+                                               placeholder="••••••••" required>
+                                        <button class="btn btn-outline-secondary" type="button" 
+                                                id="togglePassword">
+                                            <i class="fas fa-eye"></i>
+                                        </button>
+                                    </div>
+                                    <div class="password-strength mt-2">
+                                        <div class="progress" style="height: 5px;">
+                                            <div class="progress-bar" id="passwordStrength" 
+                                                 style="width: 0%"></div>
+                                        </div>
+                                        <small class="text-muted" id="passwordHint">
+                                            Use 8+ characters with mix of letters, numbers & symbols
+                                        </small>
+                                    </div>
+                                </div>
+                                
+                                <div class="col-md-6 mb-3">
+                                    <label class="form-label">Confirm Password *</label>
+                                    <div class="input-group">
+                                        <span class="input-group-text">
+                                            <i class="fas fa-key"></i>
+                                        </span>
+                                        <input type="password" class="form-control" id="confirm_password" 
+                                               placeholder="••••••••" required>
+                                    </div>
+                                    <div id="passwordMatch" class="mt-2"></div>
+                                </div>
+                            </div>
+                            
+                            <div class="mb-3">
+                                <label class="form-label">Role</label>
+                                <div class="input-group">
+                                    <span class="input-group-text">
+                                        <i class="fas fa-user-tag"></i>
+                                    </span>
+                                    <select class="form-select" id="role">
+                                        <option value="employee">Employee</option>
+                                        <option value="manager">Manager</option>
+                                        <option value="admin">Administrator</option>
+                                    </select>
+                                </div>
+                                <small class="text-muted">Admin role requires approval</small>
+                            </div>
+                            
+                            <div class="form-check mb-4">
+                                <input class="form-check-input" type="checkbox" id="terms" required>
+                                <label class="form-check-label">
+                                    I agree to the 
+                                    <a href="#" class="text-decoration-none">Terms of Service</a> 
+                                    and 
+                                    <a href="#" class="text-decoration-none">Privacy Policy</a>
+                                </label>
+                            </div>
+                            
+                            <div class="d-grid gap-2">
+                                <button type="submit" class="btn btn-primary btn-lg">
+                                    <i class="fas fa-user-plus me-2"></i>Register Account
+                                </button>
+                                <a href="login.html" class="btn btn-outline-secondary">
+                                    Already have an account? Login
+                                </a>
+                            </div>
+                        </form>
+                    </div>
+                    
+                    <div class="card-footer text-center py-3">
+                        <small class="text-muted">
+                            <i class="fas fa-info-circle me-1"></i>
+                            Your request will be reviewed by administrator
+                        </small>
+                    </div>
+                </div>
+                
+                <div class="text-center mt-4">
+                    <a href="index.html" class="text-decoration-none">
+                        <i class="fas fa-arrow-left me-1"></i>Back to Home
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/auth.js"></script>
+</body>
+</html>

@@ -1,0 +1,433 @@
+/* Main Styles for SecurePass Pro */
+
+:root {
+    --primary-color: #4361ee;
+    --secondary-color: #3a0ca3;
+    --success-color: #4cc9f0;
+    --warning-color: #f72585;
+    --danger-color: #7209b7;
+    --light-color: #f8f9fa;
+    --dark-color: #212529;
+    --border-radius: 10px;
+    --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    --transition: all 0.3s ease;
+}
+
+/* General Styles */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f5f7fb;
+    color: #333;
+    line-height: 1.6;
+}
+
+.min-vh-100 {
+    min-height: 100vh;
+}
+
+/* Card Styles */
+.sweet-card {
+    border-radius: var(--border-radius);
+    border: none;
+    box-shadow: var(--box-shadow);
+    transition: var(--transition);
+}
+
+.sweet-card:hover {
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+    transform: translateY(-2px);
+}
+
+/* Button Styles */
+.btn {
+    border-radius: 8px;
+    padding: 10px 20px;
+    font-weight: 600;
+    transition: var(--transition);
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    border: none;
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(67, 97, 238, 0.4);
+}
+
+/* Form Styles */
+.form-control {
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    padding: 12px 15px;
+    transition: var(--transition);
+}
+
+.form-control:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 0.2rem rgba(67, 97, 238, 0.25);
+}
+
+.input-group-text {
+    background-color: #f8f9fa;
+    border-radius: 8px 0 0 8px;
+}
+
+/* Password Strength Indicator */
+.password-strength {
+    margin-top: 5px;
+}
+
+.strength-weak {
+    color: #dc3545;
+}
+
+.strength-medium {
+    color: #ffc107;
+}
+
+.strength-strong {
+    color: #28a745;
+}
+
+/* Dashboard Styles */
+.stat-card {
+    border-left: 4px solid;
+    transition: var(--transition);
+}
+
+.stat-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+}
+
+.border-left-primary {
+    border-left-color: var(--primary-color) !important;
+}
+
+.border-left-warning {
+    border-left-color: var(--warning-color) !important;
+}
+
+.border-left-info {
+    border-left-color: var(--success-color) !important;
+}
+
+.border-left-success {
+    border-left-color: #28a745 !important;
+}
+
+/* Sidebar */
+.sidebar {
+    min-height: calc(100vh - 56px);
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+.nav-link {
+    border-radius: 8px;
+    margin-bottom: 5px;
+    padding: 10px 15px;
+    transition: var(--transition);
+}
+
+.nav-link:hover {
+    background-color: rgba(67, 97, 238, 0.1);
+    color: var(--primary-color);
+}
+
+.nav-link.active {
+    background-color: var(--primary-color);
+    color: white !important;
+}
+
+/* Avatar */
+.avatar-circle {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    color: white;
+    font-size: 24px;
+    font-weight: bold;
+    background-size: cover;
+    background-position: center;
+}
+
+.avatar-text {
+    color: white;
+}
+
+/* Table Styles */
+.table {
+    border-radius: var(--border-radius);
+    overflow: hidden;
+}
+
+.table-hover tbody tr:hover {
+    background-color: rgba(67, 97, 238, 0.05);
+}
+
+/* Status Badges */
+.badge {
+    padding: 5px 10px;
+    border-radius: 20px;
+    font-weight: 500;
+}
+
+.status-expired {
+    background-color: #dc3545;
+    color: white;
+}
+
+.status-warning {
+    background-color: #ffc107;
+    color: #212529;
+}
+
+.status-safe {
+    background-color: #28a745;
+    color: white;
+}
+
+.status-info {
+    background-color: #17a2b8;
+    color: white;
+}
+
+/* Timeline for Activity Log */
+.timeline {
+    position: relative;
+    padding-left: 30px;
+}
+
+.timeline::before {
+    content: '';
+    position: absolute;
+    left: 15px;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background-color: #dee2e6;
+}
+
+.timeline-item {
+    position: relative;
+    margin-bottom: 20px;
+}
+
+.timeline-item::before {
+    content: '';
+    position: absolute;
+    left: -23px;
+    top: 5px;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background-color: var(--primary-color);
+    border: 2px solid white;
+}
+
+/* Password Item */
+.password-item {
+    border-left: 4px solid;
+    padding: 15px;
+    margin-bottom: 10px;
+    border-radius: 0 8px 8px 0;
+    background-color: white;
+    transition: var(--transition);
+}
+
+.password-item:hover {
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    transform: translateX(5px);
+}
+
+.password-item.expiring {
+    border-left-color: var(--warning-color);
+    animation: pulse 2s infinite;
+}
+
+.password-item.expired {
+    border-left-color: var(--danger-color);
+    animation: shake 0.5s infinite;
+}
+
+.password-item.safe {
+    border-left-color: #28a745;
+}
+
+/* Animations */
+@keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.7; }
+}
+
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-2px); }
+    75% { transform: translateX(2px); }
+}
+
+/* Loading Spinner */
+.spinner-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 200px;
+}
+
+.spinner {
+    width: 40px;
+    height: 40px;
+    border: 4px solid #f3f3f3;
+    border-top: 4px solid var(--primary-color);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .sidebar {
+        position: static;
+        height: auto;
+        min-height: auto;
+    }
+    
+    .navbar-brand span {
+        display: none;
+    }
+    
+    .stat-card {
+        margin-bottom: 20px;
+    }
+    
+    .timeline {
+        padding-left: 20px;
+    }
+    
+    .timeline::before {
+        left: 10px;
+    }
+    
+    .timeline-item::before {
+        left: -17px;
+    }
+}
+
+/* Print Styles */
+@media print {
+    .sidebar, .navbar, .footer, .btn {
+        display: none !important;
+    }
+    
+    .card {
+        border: 1px solid #ddd !important;
+        box-shadow: none !important;
+    }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--primary-color);
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--secondary-color);
+}
+
+/* Toast Notifications */
+.toast-container {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 9999;
+}
+
+.toast {
+    min-width: 300px;
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+}
+
+/* Navbar Brand Styling */
+.navbar-brand .fw-bold {
+    background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    font-weight: bold;
+}
+
+/* Modal Styles */
+.modal-content {
+    border-radius: var(--border-radius);
+    border: none;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+}
+
+.modal-header {
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    color: white;
+    border-radius: var(--border-radius) var(--border-radius) 0 0;
+}
+
+/* Tooltip Customization */
+.tooltip {
+    border-radius: 8px;
+}
+
+/* Progress Bar */
+.progress {
+    height: 10px;
+    border-radius: 5px;
+}
+
+.progress-bar {
+    border-radius: 5px;
+    background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+}
+
+/* Dark Mode Support */
+@media (prefers-color-scheme: dark) {
+    body {
+        background-color: #1a1a1a;
+        color: #f0f0f0;
+    }
+    
+    .card {
+        background-color: #2d2d2d;
+        color: #f0f0f0;
+    }
+    
+    .form-control {
+        background-color: #3d3d3d;
+        border-color: #4d4d4d;
+        color: #f0f0f0;
+    }
+    
+    .input-group-text {
+        background-color: #3d3d3d;
+        border-color: #4d4d4d;
+        color: #f0f0f0;
+    }
+}

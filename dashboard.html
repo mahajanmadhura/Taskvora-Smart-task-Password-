@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Taskvora</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/sweet-theme.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="dashboard.html">
+                <i class="fas fa-clipboard-check me-2"></i>
+                <span class="fw-bold">Taskvora</span>
+                <small class="text-muted ms-2">Dashboard</small>
+            </a>
+            
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" 
+                    data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="dashboard.html">
+                            <i class="fas fa-home me-1"></i>Dashboard
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" id="addPasswordBtn">
+                            <i class="fas fa-plus-circle me-1"></i>Add Password
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" id="addReminderBtn">
+                            <i class="fas fa-bell me-1"></i>Add Reminder
+                        </a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="userDropdown" 
+                           data-bs-toggle="dropdown">
+                            <i class="fas fa-user-circle me-1"></i>
+                            <span id="userName">User</span>
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end">
+                            <li>
+                                <a class="dropdown-item" href="profile.html">
+                                    <i class="fas fa-user me-2"></i>My Profile
+                                </a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item" href="#">
+                                    <i class="fas fa-cog me-2"></i>Settings
+                                </a>
+                            </li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li>
+                                <a class="dropdown-item text-danger" href="#" id="logoutBtn">
+                                    <i class="fas fa-sign-out-alt me-2"></i>Logout
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Sidebar & Main Content -->
+    <div class="container-fluid">
+        <div class="row">
+            <!-- Sidebar -->
+            <div class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
+                <div class="position-sticky pt-3">
+                    <div class="text-center mb-4 mt-3">
+                        <div class="position-relative d-inline-block mb-2">
+                            <div class="avatar-circle bg-primary mx-auto" id="avatarCircle">
+                                <span id="avatarInitials" class="avatar-text">JD</span>
+                            </div>
+                            <button type="button" id="avatarUploadTrigger" class="btn btn-sm btn-light rounded-circle shadow-sm"
+                                    style="position:absolute;bottom:0;right:8px;width:28px;height:28px;padding:0;display:flex;align-items:center;justify-content:center;border:2px solid #fff;"
+                                    title="Change photo">
+                                <i class="fas fa-plus"></i>
+                            </button>
+                            <button type="button" id="avatarRemoveBtn" class="btn btn-sm btn-light rounded-circle shadow-sm"
+                                    style="position:absolute;top:0;right:8px;width:24px;height:24px;padding:0;display:flex;align-items:center;justify-content:center;border:2px solid #fff;font-size:0.7rem;"
+                                    title="Remove photo">
+                                <i class="fas fa-times"></i>
+                            </button>
+                            <input type="file" id="avatarFileInput" accept="image/*" style="display:none" />
+                        </div>
+                        <h6 id="userFullName" class="mb-1">John Doe</h6>
+                        <small class="text-muted">
+                            <span id="userRole">Employee</span> | 
+                            <span id="userDept">IT Department</span>
+                        </small>
+                    </div>
+                    
+                    <ul class="nav flex-column">
+                        <li class="nav-item">
+                            <a class="nav-link active" href="dashboard.html">
+                                <i class="fas fa-tachometer-alt me-2"></i>Dashboard
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#" id="viewPasswords">
+                                <i class="fas fa-key me-2"></i>My Passwords
+                                <span class="badge bg-danger float-end" id="expiringCount">0</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#" id="viewReminders">
+                                <i class="fas fa-bell me-2"></i>Reminders
+                                <span class="badge bg-warning float-end" id="reminderCount">0</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#" id="viewReports">
+                                <i class="fas fa-chart-bar me-2"></i>Reports
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="profile.html">
+                                <i class="fas fa-user me-2"></i>Profile
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">
+                                <i class="fas fa-cog me-2"></i>Settings
+                            </a>
+                        </li>
+                    </ul>
+                    
+                    <div class="mt-4 p-3 bg-warning bg-opacity-10 rounded">
+                        <h6 class="mb-2">
+                            <i class="fas fa-exclamation-triangle me-1"></i>Security Tips
+                        </h6>
+                        <small class="d-block mb-1">• Change passwords every 90 days</small>
+                        <small class="d-block mb-1">• Use different passwords for each app</small>
+                        <small class="d-block">• Enable 2FA when available</small>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Main Content -->
+            <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4 py-4">
+                <!-- Welcome Banner -->
+                <div class="d-flex justify-content-between flex-wrap flex-md-nowrap 
+                          align-items-center pt-3 pb-2 mb-4 border-bottom">
+                    <h1 class="h2">
+                        <i class="fas fa-tachometer-alt me-2"></i>Dashboard
+                        <small class="text-muted" id="currentDate"></small>
+                    </h1>
+                    <div class="btn-toolbar"></div>
+                </div>
+
+                <!-- Stats Cards -->
+                <div class="row mb-4">
+                    <div class="col-xl-3 col-md-6 mb-4">
+                        <div class="card stat-card border-left-primary shadow h-100 py-2">
+                            <div class="card-body">
+                                <div class="row no-gutters align-items-center">
+                                    <div class="col mr-2">
+                                        <div class="text-xs fw-bold text-primary mb-1">
+                                            Total Passwords
+                                        </div>
+                                        <div class="h5 mb-0 fw-bold" id="totalPasswords">0</div>
+                                    </div>
+                                    <div class="col-auto">
+                                        <i class="fas fa-key fa-2x text-primary"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-xl-3 col-md-6 mb-4">
+                        <div class="card stat-card border-left-warning shadow h-100 py-2">
+                            <div class="card-body">
+                                <div class="row no-gutters align-items-center">
+                                    <div class="col mr-2">
+                                        <div class="text-xs fw-bold text-warning mb-1">
+                                            Expiring Soon (7 days)
+                                        </div>
+                                        <div class="h5 mb-0 fw-bold" id="expiringPasswords">0</div>
+                                    </div>
+                                    <div class="col-auto">
+                                        <i class="fas fa-exclamation-triangle fa-2x text-warning"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-xl-3 col-md-6 mb-4">
+                        <div class="card stat-card border-left-info shadow h-100 py-2">
+                            <div class="card-body">
+                                <div class="row no-gutters align-items-center">
+                                    <div class="col mr-2">
+                                        <div class="text-xs fw-bold text-info mb-1">
+                                            Total Reminders
+                                        </div>
+                                        <div class="h5 mb-0 fw-bold" id="activeReminders">0</div>
+                                    </div>
+                                    <div class="col-auto">
+                                        <i class="fas fa-bell fa-2x text-info"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-xl-3 col-md-6 mb-4">
+                        <div class="card stat-card border-left-success shadow h-100 py-2">
+                            <div class="card-body">
+                                <div class="row no-gutters align-items-center">
+                                    <div class="col mr-2">
+                                        <div class="text-xs fw-bold text-success mb-1">
+                                            Email Me Count
+                                        </div>
+                                        <div class="h5 mb-0 fw-bold" id="emailCount">0</div>
+                                    </div>
+                                    <div class="col-auto">
+                                        <i class="fas fa-envelope fa-2x text-success"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Quick Actions -->
+                <div class="row mb-4">
+                    <div class="col-12">
+                        <div class="card shadow">
+                            <div class="card-header bg-light">
+                                <h6 class="mb-0">
+                                    <i class="fas fa-bolt me-2"></i>Quick Actions
+                                </h6>
+                            </div>
+                            <div class="card-body">
+                                <div class="row text-center">
+                                    <div class="col-md-3 mb-3">
+                                        <button class="btn btn-outline-primary w-100 py-3" 
+                                                id="quickAddPassword">
+                                            <i class="fas fa-plus-circle fa-2x mb-2"></i><br>
+                                            Add Password
+                                        </button>
+                                    </div>
+                                    <div class="col-md-3 mb-3">
+                                        <button class="btn btn-outline-warning w-100 py-3" 
+                                                id="quickAddReminder">
+                                            <i class="fas fa-bell fa-2x mb-2"></i><br>
+                                            Add Reminder
+                                        </button>
+                                    </div>
+                                    <div class="col-md-3 mb-3">
+                                        <button class="btn btn-outline-info w-100 py-3" 
+                                                id="quickEmailMe">
+                                            <i class="fas fa-envelope fa-2x mb-2"></i><br>
+                                            Email me
+                                        </button>
+                                    </div>
+                                    <div class="col-md-3 mb-3">
+                                        <button class="btn btn-outline-success w-100 py-3"
+                                                id="quickUploadExcel">
+                                            <i class="fas fa-file-excel fa-2x mb-2"></i><br>
+                                            Upload Excel File
+                                        </button>
+                                        <input type="file" id="excelFileInput" accept=".xlsx,.xls,.xlsm" style="display:none" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Recent Passwords & Reminders -->
+                <div class="row">
+                    <!-- Recent Passwords -->
+                    <div class="col-xl-6 mb-4">
+                        <div class="card shadow h-100">
+                            <div class="card-header bg-light d-flex justify-content-between 
+                                      align-items-center">
+                                <h6 class="mb-0">
+                                    <i class="fas fa-key me-2"></i>Recent Passwords
+                                </h6>
+                                <a href="#" class="btn btn-sm btn-outline-primary" 
+                                   id="viewAllPasswords">
+                                    View All
+                                </a>
+                            </div>
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                    <table class="table table-hover">
+                                        <thead>
+                                            <tr>
+                                                <th>Application</th>
+                                                <th>Username</th>
+                                                <th>Expires</th>
+                                                <th>Status</th>
+                                                <th class="text-end">Action</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="recentPasswordsTable">
+                                            <!-- Filled by JavaScript -->
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div class="text-center" id="noPasswordsMessage">
+                                    <p class="text-muted mb-0">No passwords added yet</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Upcoming Reminders -->
+                    <div class="col-xl-6 mb-4">
+                        <div class="card shadow h-100">
+                            <div class="card-header bg-light d-flex justify-content-between 
+                                      align-items-center">
+                                <h6 class="mb-0">
+                                    <i class="fas fa-bell me-2"></i>Upcoming Reminders
+                                </h6>
+                                <a href="#" class="btn btn-sm btn-outline-warning" 
+                                   id="viewAllReminders">
+                                    View All
+                                </a>
+                            </div>
+                            <div class="card-body">
+                                <div id="remindersList">
+                                    <!-- Filled by JavaScript -->
+                                </div>
+                                <div class="text-center" id="noRemindersMessage">
+                                    <p class="text-muted mb-0">No reminders scheduled</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Uploaded Excel Files -->
+                <div class="row mb-4">
+                    <div class="col-12">
+                        <div class="card shadow">
+                            <div class="card-header bg-light d-flex justify-content-between align-items-center">
+                                <h6 class="mb-0">
+                                    <i class="fas fa-file-excel me-2 text-success"></i>Uploaded Excel Files
+                                </h6>
+                            </div>
+                            <div class="card-body">
+                                <div id="excelFilesList">
+                                    <p class="text-muted mb-0 small">No Excel files uploaded yet.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Expiring Soon Alert -->
+                <div class="row mb-4" id="expiringAlert" style="display: none;">
+                    <div class="col-12">
+                        <div class="alert alert-warning alert-dismissible fade show">
+                            <h5>
+                                <i class="fas fa-exclamation-triangle me-2"></i>
+                                Action Required: Passwords Expiring Soon!
+                            </h5>
+                            <p id="expiringAlertText"></p>
+                            <button type="button" class="btn btn-warning" 
+                                    id="viewExpiringBtn">
+                                View Expiring Passwords
+                            </button>
+                            <button type="button" class="btn btn-outline-warning" 
+                                    data-bs-dismiss="alert">
+                                Dismiss
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+
+            </main>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer mt-auto py-3 bg-dark text-white">
+        <div class="container-fluid">
+            <div class="row align-items-center">
+                <div class="col-md-6">
+                    <span class="text-muted">
+                        <i class="fas fa-shield-alt me-1"></i>
+                        SecurePass Pro v1.0.0 • Last Login: <span id="lastLogin">--</span>
+                    </span>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <span class="text-muted">
+                        <i class="fas fa-database me-1"></i>
+                        Database: <span id="dbStatus">Connected</span> • 
+                        <i class="fas fa-user me-1"></i>
+                        Session: <span id="sessionTimer">--:--</span>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Modals will be loaded here by JavaScript -->
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/dashboard.js"></script>
+    <!-- Simple, robust bindings to guarantee button clicks work -->
+    <script src="js/dashboard-ux.js"></script>
+</body>
+</html>
